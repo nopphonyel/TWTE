@@ -32,4 +32,14 @@ public class FragmentAdapter extends android.support.v4.app.FragmentPagerAdapter
     public int getCount() {
         return PAGE_NUM;
     }
+
+    @Override
+    public CharSequence getPageTitle(int position){
+        switch (position){
+            case 0 : return "Promotion";
+            case 1 : return "Filter";
+            case 2 : return "Restaurant";
+            default: return null;
+        }
+    }
 }
