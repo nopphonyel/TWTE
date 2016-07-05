@@ -3,6 +3,7 @@ package com.leaderproject.doikum.thewaytoeat;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,19 +18,21 @@ public class MainActivity extends AppCompatActivity {
 
     protected ViewPager viewPager;
     protected FragmentAdapter fragmentAdapter;
+    protected TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_main_action);
         viewPager = (ViewPager) findViewById(R.id.pager);
         fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
-        viewPager.setAdapter(fragmentAdapter);
+        setupTabs(tabLayout , viewPager , fragmentAdapter);
 
         /*  // DO NOT REMOVE THIS COMMENT //
         fab.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
+    }
+
+    private void setupTabs(TabLayout tl , ViewPager vp , FragmentAdapter fa){
+        vp.setAdapter(fa);
+        tl.setupWithViewPager(vp);
+        for(int i = 0 ; i< fa.getCount() ; i++){
+            tl.getTabAt(i).setIcon(R.mipmap.ic_launcher);
+        }
     }
 
     @Override

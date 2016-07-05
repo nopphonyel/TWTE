@@ -42,4 +42,5 @@ public class FragmentAdapter extends android.support.v4.app.FragmentPagerAdapter
             default: return null;
         }
     }
+
 }
