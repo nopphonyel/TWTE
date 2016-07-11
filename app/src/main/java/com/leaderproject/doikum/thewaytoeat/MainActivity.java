@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import com.leaderproject.doikum.thewaytoeat.adptr.*;
 import com.leaderproject.doikum.thewaytoeat.fragment.*;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     protected ViewPager viewPager;
     protected FragmentAdapter fragmentAdapter;
@@ -34,14 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         setupTabs(tabLayout , viewPager , fragmentAdapter);
 
-        /*  // DO NOT REMOVE THIS COMMENT //
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+          // DO NOT REMOVE THIS COMMENT //
+        fab.setOnClickListener(this);
     }
 
     private void setupTabs(TabLayout tl , ViewPager vp , FragmentAdapter fa){
@@ -50,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0 ; i< fa.getCount() ; i++){
             tl.getTabAt(i).setIcon(R.mipmap.ic_launcher);
         }
+        tl.getTabAt(0).setIcon(R.mipmap.ic_promotion);
+        tl.getTabAt(1).setIcon(R.mipmap.ic_rand_setting);
+        tl.getTabAt(2).setIcon(R.mipmap.ic_restuarant);
     }
 
     @Override
@@ -72,5 +69,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        
     }
 }
