@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,18 +36,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setupTabs(tabLayout , viewPager , fragmentAdapter);
 
           // DO NOT REMOVE THIS COMMENT //
-        fab.setOnClickListener(this);
+        if(fab!=null) fab.setOnClickListener(this);
     }
 
     private void setupTabs(TabLayout tl , ViewPager vp , FragmentAdapter fa){
         vp.setAdapter(fa);
         tl.setupWithViewPager(vp);
-        for(int i = 0 ; i< fa.getCount() ; i++){
-            tl.getTabAt(i).setIcon(R.mipmap.ic_launcher);
+        try {
+            tl.getTabAt(0).setIcon(R.mipmap.ic_promotion);
+            tl.getTabAt(1).setIcon(R.mipmap.ic_rand_setting);
+            tl.getTabAt(2).setIcon(R.mipmap.ic_restuarant);
         }
-        tl.getTabAt(0).setIcon(R.mipmap.ic_promotion);
-        tl.getTabAt(1).setIcon(R.mipmap.ic_rand_setting);
-        tl.getTabAt(2).setIcon(R.mipmap.ic_restuarant);
+        catch (NullPointerException ex){
+            Log.e("LOAD_ICON" , ex.toString());
+        }
     }
 
     @Override
