@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected ViewPager viewPager;
     protected FragmentAdapter fragmentAdapter;
     protected TabLayout tabLayout;
+    protected FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_main_action);
+        fab = (FloatingActionButton) findViewById(R.id.fab_main_action);
         viewPager = (ViewPager) findViewById(R.id.pager);
         fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -83,6 +84,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        if(v == fab){
+
+        }
+    }
+
+    private void getDataFromDlitSource(){
 
     }
 }
