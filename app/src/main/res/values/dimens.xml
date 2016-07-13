@@ -5,4 +5,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="nice_tab_layout">62dp</dimen>
     <dimen name="nice_card_margin">4dp</dimen>
+    <dimen name="nice_inside_card_relative_margin">12dp</dimen>
+    <dimen name="nice_inside_card_relative_margin_top">10dp</dimen>
 </resources>

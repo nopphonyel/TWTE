@@ -7,24 +7,34 @@
         android:id="@+id/type_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/nice_card_margin">
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="@dimen/nice_card_margin"
+        android:layout_marginLeft="@dimen/nice_card_margin"
+        android:layout_marginRight="@dimen/nice_card_margin"
+        >
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top"
+            android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
+            android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
+            android:layout_marginBottom="@dimen/nice_inside_card_relative_margin">
 
             <TextView
                 android:id="@+id/type_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="เลือกประเภทอาหาร"
+                android:text="@string/card_type_title"
                 android:textSize="23dp"
-                android:textStyle="bold" />
+                 />
 
             <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/type_spin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/type_title"
+                android:descendantFocusability="beforeDescendants"
                 />
 
         </RelativeLayout>
@@ -36,24 +46,33 @@
         android:layout_below="@+id/type_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/nice_card_margin">
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="@dimen/nice_card_margin"
+        android:layout_marginLeft="@dimen/nice_card_margin"
+        android:layout_marginRight="@dimen/nice_card_margin">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top"
+            android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
+            android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
+            android:layout_marginBottom="@dimen/nice_inside_card_relative_margin">
 
             <TextView
                 android:id="@+id/zone_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="เลือกบริเวณ"
+                android:text="@string/card_zone_title"
                 android:textSize="23dp"
-                android:textStyle="bold" />
+                 />
 
             <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/zone_spin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/zone_title"
+                android:descendantFocusability="beforeDescendants"
                 />
 
         </RelativeLayout>
@@ -65,36 +84,45 @@
         android:id="@+id/time_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/nice_card_margin">
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="@dimen/nice_card_margin"
+        android:layout_marginLeft="@dimen/nice_card_margin"
+        android:layout_marginRight="@dimen/nice_card_margin">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top"
+            android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
+            android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
+            android:layout_marginBottom="@dimen/nice_inside_card_relative_margin">
 
             <TextView
                 android:id="@+id/time_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="เลือกเวลา"
+                android:text="@string/card_time_pick_title"
                 android:textSize="23dp"
-                android:textStyle="bold" />
+                 />
 
             <RadioGroup
                 android:id="@+id/time_type"
+                android:layout_marginTop="@dimen/nice_card_margin"
                 android:layout_below="@id/time_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:text="ตอนนี้"
+                    android:text="@string/radio_button_time_now"
                     android:id="@+id/radio_button_time_now"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="เลิอกเวลา"
+                    android:text="@string/radio_button_time_pick"
                     android:id="@+id/radio_button_time_pick"/>
 
             </RadioGroup>

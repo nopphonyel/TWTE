@@ -43,9 +43,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         vp.setAdapter(fa);
         tl.setupWithViewPager(vp);
         try {
-            tl.getTabAt(0).setIcon(R.mipmap.ic_promotion);
-            tl.getTabAt(1).setIcon(R.mipmap.ic_rand_setting);
-            tl.getTabAt(2).setIcon(R.mipmap.ic_restuarant);
+            if(!ProgramStaticContent.isBetaVersion()) {
+                tl.getTabAt(0).setIcon(R.mipmap.ic_promotion);
+                tl.getTabAt(1).setIcon(R.mipmap.ic_rand_setting);
+                tl.getTabAt(2).setIcon(R.mipmap.ic_restuarant);
+            }
+            else {
+                tl.getTabAt(0).setIcon(R.mipmap.ic_rand_setting);
+                tl.getTabAt(1).setIcon(R.mipmap.ic_restuarant);
+            }
         }
         catch (NullPointerException ex){
             Log.e("LOAD_ICON" , ex.toString());

@@ -3,6 +3,7 @@ package com.leaderproject.doikum.thewaytoeat.adptr;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
+import com.leaderproject.doikum.thewaytoeat.ProgramStaticContent;
 import com.leaderproject.doikum.thewaytoeat.fragment.PromotionFragment;
 import com.leaderproject.doikum.thewaytoeat.fragment.RandomPropertiesFragment;
 import com.leaderproject.doikum.thewaytoeat.fragment.RandomResultFragment;
@@ -20,27 +21,61 @@ public class FragmentAdapter extends android.support.v4.app.FragmentPagerAdapter
 
     @Override
     public Fragment getItem(int position) {
-       switch (position){
-           case 0 : return new PromotionFragment();
-           case 1 : return new RandomPropertiesFragment();
-           case 2 : return new RandomResultFragment();
-           default: return null;
-       }
+        if (ProgramStaticContent.isBetaVersion()) {
+            switch (position) {
+                case 0:
+                    return new RandomPropertiesFragment();
+                case 1:
+                    return new RandomResultFragment();
+                default:
+                    return null;
+            }
+        } else {
+            switch (position) {
+                case 0:
+                    return new PromotionFragment();
+                case 1:
+                    return new RandomPropertiesFragment();
+                case 2:
+                    return new RandomResultFragment();
+                default:
+                    return null;
+            }
+        }
     }
 
     @Override
     public int getCount() {
-        return PAGE_NUM;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position){
-        switch (position){
-            case 0 : return "Promotion";
-            case 1 : return "Filter";
-            case 2 : return "Restaurant";
-            default: return null;
+        if (ProgramStaticContent.isBetaVersion()) {
+            return PAGE_NUM - 1;
+        } else {
+            return PAGE_NUM;
         }
     }
 
+    @Override
+    public CharSequence getPageTitle(int position) {
+        if (ProgramStaticContent.isBetaVersion()) {
+            switch (position) {
+                case 0:
+                    return "Filter";
+                case 1:
+                    return "Restaurant";
+                default:
+                    return null;
+            }
+        } else {
+            switch (position) {
+                case 0:
+                    return "Promotion";
+                case 1:
+                    return "Filter";
+                case 2:
+                    return "Restaurant";
+                default:
+                    return null;
+            }
+
+        }
+    }
 }
