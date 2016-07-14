@@ -85,11 +85,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
         if(v == fab){
-
+            viewPager.setCurrentItem(1);
+            getDataFromDlitSource();
         }
     }
 
-    private void getDataFromDlitSource(){
 
+
+    // ไอซ์มาเขียนตรงนี้เบย ด้านล่างนี่เลย
+
+    //////////////////////////////////////////
+    //     //////     //////    //////      //
+    //       //      //         ////        //
+    //       //      //         //          //
+    //     //////     //////    //////      //
+    //////////////////////////////////////////
+    private void getDataFromDlitSource(){
+        int chooseHour = ProgramStaticContent.getChooseTimeHour() , chooseMin = ProgramStaticContent.getChooseTimeMin();
+        int zoneCode = ProgramStaticContent.getSelectedZoneCode() , typeCode = ProgramStaticContent.getSelectedTypeCode();
     }
 }
