@@ -70,6 +70,7 @@ public class ProgramStaticContent {
     public static void setTimeChoose(int hour,int min){
         chooseTimeHour = hour;
         chooseTimeMin = min;
+        Log.d(TAG_CURRENT_VALUE , "Current time is " + chooseTimeHour + ":" + chooseTimeMin);
     }
 
     public static int getChooseTimeHour(){

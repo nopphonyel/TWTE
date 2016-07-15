@@ -1,134 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/type_card"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="@dimen/nice_card_margin"
-        android:layout_marginLeft="@dimen/nice_card_margin"
-        android:layout_marginRight="@dimen/nice_card_margin"
-        >
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:id="@+id/type_card"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top"
-            android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
-            android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
-            android:layout_marginBottom="@dimen/nice_inside_card_relative_margin">
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="@dimen/nice_card_margin"
+            android:layout_marginRight="@dimen/nice_card_margin"
+            android:layout_marginTop="@dimen/nice_card_margin">
 
-            <TextView
-                android:id="@+id/type_title"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/card_type_title"
-                android:textSize="23dp"
-                 />
+                android:layout_marginBottom="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top">
 
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/type_spin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/type_title"
-                android:descendantFocusability="beforeDescendants"
-                />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/zone_card"
-        android:layout_below="@+id/type_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="@dimen/nice_card_margin"
-        android:layout_marginLeft="@dimen/nice_card_margin"
-        android:layout_marginRight="@dimen/nice_card_margin">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top"
-            android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
-            android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
-            android:layout_marginBottom="@dimen/nice_inside_card_relative_margin">
-
-            <TextView
-                android:id="@+id/zone_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/card_zone_title"
-                android:textSize="23dp"
-                 />
-
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/zone_spin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/zone_title"
-                android:descendantFocusability="beforeDescendants"
-                />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_below="@+id/zone_card"
-        android:id="@+id/time_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="@dimen/nice_card_margin"
-        android:layout_marginLeft="@dimen/nice_card_margin"
-        android:layout_marginRight="@dimen/nice_card_margin">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top"
-            android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
-            android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
-            android:layout_marginBottom="@dimen/nice_inside_card_relative_margin">
-
-            <TextView
-                android:id="@+id/time_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/card_time_pick_title"
-                android:textSize="23dp"
-                 />
-
-            <RadioGroup
-                android:id="@+id/time_type"
-                android:layout_marginTop="@dimen/nice_card_margin"
-                android:layout_below="@id/time_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:text="@string/radio_button_time_now"
-                    android:id="@+id/radio_button_time_now"
+                <TextView
+                    android:id="@+id/type_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:text="@string/card_type_title"
+                    android:textSize="23dp" />
 
-                <RadioButton
+                <ImageView
+                    android:id="@+id/type_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@mipmap/ic_dinning" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/type_spin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/type_title"
+                    android:descendantFocusability="beforeDescendants" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/zone_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/type_card"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="@dimen/nice_card_margin"
+            android:layout_marginRight="@dimen/nice_card_margin"
+            android:layout_marginTop="@dimen/nice_card_margin">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top">
+
+                <TextView
+                    android:id="@+id/zone_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/radio_button_time_pick"
-                    android:id="@+id/radio_button_time_pick"/>
+                    android:text="@string/card_zone_title"
+                    android:textSize="23dp" />
 
-            </RadioGroup>
+                <ImageView
+                    android:id="@+id/zone_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@mipmap/ic_zone" />
 
-        </RelativeLayout>
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/zone_spin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/zone_title"
+                    android:descendantFocusability="beforeDescendants" />
 
-    </android.support.v7.widget.CardView>
+            </RelativeLayout>
 
-</RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/time_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/zone_card"
+            android:layout_marginBottom="85dp"
+            android:layout_marginLeft="@dimen/nice_card_margin"
+            android:layout_marginRight="@dimen/nice_card_margin"
+            android:layout_marginTop="@dimen/nice_card_margin"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginLeft="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
+                android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top">
+
+                <TextView
+                    android:id="@+id/time_preview"
+                    android:textSize="35dp"
+                    android:text="HH:MM:SS"
+                    android:textColor="#cbe1c8"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/time_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_time_pick_title"
+                    android:textSize="23dp" />
+
+                <RadioGroup
+                    android:id="@+id/time_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/time_title"
+                    android:layout_marginTop="@dimen/nice_card_margin">
+
+                    <RadioButton
+                        android:id="@+id/radio_button_time_now"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_button_time_now" />
+
+                    <RadioButton
+                        android:id="@+id/radio_button_time_pick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_button_time_pick" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -10,9 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.support.v7.widget.AppCompatSpinner;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.leaderproject.doikum.thewaytoeat.ProgramStaticContent;
@@ -26,11 +29,13 @@ import java.util.Calendar;
 public class RandomPropertiesFragment extends Fragment implements View.OnClickListener {
 
     private Handler updateRadioTextViewCurrentTime = new Handler();
-    AppCompatSpinner typeSpinner, zoneSpinner;
-    RadioButton radioTimeNow, radioTimePick;
+    private AppCompatSpinner typeSpinner, zoneSpinner;
+    private RadioButton radioTimeNow, radioTimePick;
     int currentHour, currentMin, currentSecond;
-    Calendar currentTime;
-    TimePickerDialog timePickerDialoge;
+    private Calendar currentTime;
+    private TimePickerDialog timePickerDialoge;
+
+    private TextView timePreview;
 
     private String radioButtonTimePick;
     private String radioButtonTimeNow;
@@ -42,6 +47,7 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
         zoneSpinner = (AppCompatSpinner) rootView.findViewById(R.id.zone_spin);
         radioTimeNow = (RadioButton) rootView.findViewById(R.id.radio_button_time_now);
         radioTimePick = (RadioButton) rootView.findViewById(R.id.radio_button_time_pick);
+        timePreview = (TextView) rootView.findViewById(R.id.time_preview);
 
         radioButtonTimePick = getActivity().getString(R.string.radio_button_time_pick);
         radioButtonTimeNow = getActivity().getString(R.string.radio_button_time_now);
@@ -72,6 +78,12 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
     private void setupSpinner(FragmentActivity fragmentActivity, AppCompatSpinner spinner, String[] stringToAdd) {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(fragmentActivity, android.R.layout.simple_list_item_1, stringToAdd);
         spinner.setAdapter(adapter);
+
+        if(spinner == typeSpinner)
+            spinner.setOnItemSelectedListener(new HandlerTypeSpinnerItemChange());
+        if(spinner == zoneSpinner)
+            spinner.setOnItemSelectedListener(new HandlerZoneSpinnerItemChange());
+
         spinner.setSelection(0);
     }
 
@@ -81,16 +93,16 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
             @Override
             public void run() {
                 if (radioTimeNow.isChecked()) {
-                    radioTimeNow.setText(getRadioTimeFormat());
+                    timePreview.setText(getTimePreviewFormat());
                 }
                 updateRadioTextViewCurrentTime.postDelayed(this, 1000);
             }
 
-            public String getRadioTimeFormat() {
+            public String getTimePreviewFormat() {
                 updateTime();
-                return radioButtonTimeNow + " (" + String.format("%02d", currentHour) + ":"
-                        + String.format("%02d", currentMin) + "." + String.format("%02d", currentSecond)
-                        + ")";
+                return String.format("%02d", currentHour) + ":"
+                        + String.format("%02d", currentMin) + ":"
+                        + String.format("%02d", currentSecond);
             }
         });
     }
@@ -102,8 +114,7 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
             TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    radioTimePick.setText(radioButtonTimePick + " " + String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
-                    radioTimeNow.setText(radioButtonTimeNow);
+                    timePreview.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
                     ProgramStaticContent.setTimeChoose(hourOfDay, minute);
                 }
             };
@@ -112,7 +123,7 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
                 @Override
                 public void onCancel(DialogInterface dialog) {
                     radioTimeNow.setChecked(true);
-                    radioTimePick.setText(radioButtonTimePick);
+
                 }
             };
 
@@ -122,8 +133,35 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
             timePickerDialoge.show();
         }
         if (v == radioTimeNow) {
-            Log.d("TAG_RADIO","radio time now has been clicked");
-            radioTimePick.setText(radioButtonTimePick);
+            Log.d("TAG_RADIO", "radio time now has been clicked");
+            ProgramStaticContent.setTimeChoose(Calendar.getInstance().get(Calendar.HOUR), Calendar.getInstance().get(Calendar.MINUTE));
         }
     }
+
+    private class HandlerTypeSpinnerItemChange implements Spinner.OnItemSelectedListener {
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            ProgramStaticContent.setSelectedTypeCode(position);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+    private class HandlerZoneSpinnerItemChange implements Spinner.OnItemSelectedListener {
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            ProgramStaticContent.setSelectedZoneCode(position);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
 }
