@@ -6,14 +6,19 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.leaderproject.doikum.thewaytoeat.adptr.*;
-import com.leaderproject.doikum.thewaytoeat.fragment.*;
+import com.leaderproject.doikum.thewaytoeat.backgroundTask.GetRestuarant;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,28 +39,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
-        setupTabs(tabLayout , viewPager , fragmentAdapter);
+        setupTabs(tabLayout, viewPager, fragmentAdapter);
 
-          // DO NOT REMOVE THIS COMMENT //
-        if(fab!=null) fab.setOnClickListener(this);
+        // DO NOT REMOVE THIS COMMENT //
+        if (fab != null) fab.setOnClickListener(this);
     }
 
-    private void setupTabs(TabLayout tl , ViewPager vp , FragmentAdapter fa){
+    private void setupTabs(TabLayout tl, ViewPager vp, FragmentAdapter fa) {
         vp.setAdapter(fa);
         tl.setupWithViewPager(vp);
         try {
-            if(!ProgramStaticContent.isBetaVersion()) {
+            if (!ProgramStaticContent.isBetaVersion()) {
                 tl.getTabAt(0).setIcon(R.mipmap.ic_promotion);
                 tl.getTabAt(1).setIcon(R.mipmap.ic_rand_setting);
                 tl.getTabAt(2).setIcon(R.mipmap.ic_restuarant);
-            }
-            else {
+            } else {
                 tl.getTabAt(0).setIcon(R.mipmap.ic_rand_setting);
                 tl.getTabAt(1).setIcon(R.mipmap.ic_restuarant);
             }
-        }
-        catch (NullPointerException ex){
-            Log.e("LOAD_ICON" , ex.toString());
+        } catch (NullPointerException ex) {
+            Log.e("LOAD_ICON", ex.toString());
         }
     }
 
@@ -84,12 +87,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-        if(v == fab){
+        if (v == fab) {
             viewPager.setCurrentItem(1);
             getDataFromDlitSource();
         }
     }
-
 
 
     // ไอซ์มาเขียนตรงนี้เบย ด้านล่างนี่เลย
@@ -100,8 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //       //      //         //          //
     //     //////     //////    //////      //
     //////////////////////////////////////////
-    private void getDataFromDlitSource(){
-        int chooseHour = ProgramStaticContent.getChooseTimeHour() , chooseMin = ProgramStaticContent.getChooseTimeMin();
-        int zoneCode = ProgramStaticContent.getSelectedZoneCode() , typeCode = ProgramStaticContent.getSelectedTypeCode();
+    private void getDataFromDlitSource() {
+        int chooseHour = ProgramStaticContent.getChooseTimeHour(), chooseMin = ProgramStaticContent.getChooseTimeMin();
+        int zoneCode = ProgramStaticContent.getSelectedZoneCode(), typeCode = ProgramStaticContent.getSelectedTypeCode();
+
+        String filter = typeCode + "," + zoneCode + "," + String.format("%02d", chooseHour) + ":" + String.format("%02d", chooseMin) + ":00"; //type,zone,time เวลาต้องอยู่ในรูป xx:xx:xx เท่านั้นนาจา
+        new GetRestuarant().execute(filter);
+
     }
 }
