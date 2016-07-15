@@ -3,6 +3,9 @@ package com.leaderproject.doikum.thewaytoeat.backgroundTask;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.leaderproject.doikum.thewaytoeat.ProgramStaticContent;
+import com.leaderproject.doikum.thewaytoeat.fragment.RandomResultFragment;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -59,7 +62,8 @@ public class GetRestuarant extends AsyncTask<String, String, String> {
     }
 
     @Override
-    protected void onPostExecute(String code) {
-
+    protected void onPostExecute(String fetchedData) {
+        ProgramStaticContent.setRestaurantObjectFromString(fetchedData);
+        RandomResultFragment.updateContent();
     }
 }

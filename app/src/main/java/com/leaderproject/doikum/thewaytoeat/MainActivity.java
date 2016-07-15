@@ -13,6 +13,8 @@ import android.view.MenuItem;
 
 import com.leaderproject.doikum.thewaytoeat.adptr.*;
 import com.leaderproject.doikum.thewaytoeat.backgroundTask.GetRestuarant;
+import com.leaderproject.doikum.thewaytoeat.fragment.RandomPropertiesFragment;
+import com.leaderproject.doikum.thewaytoeat.fragment.RandomResultFragment;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -89,6 +91,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
         if (v == fab) {
             viewPager.setCurrentItem(1);
+            if (RandomPropertiesFragment.isTimeNowChecked()) {
+                RandomPropertiesFragment.setTimeNow();
+            }
             getDataFromDlitSource();
         }
     }
@@ -108,6 +113,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String filter = typeCode + "," + zoneCode + "," + String.format("%02d", chooseHour) + ":" + String.format("%02d", chooseMin) + ":00"; //type,zone,time เวลาต้องอยู่ในรูป xx:xx:xx เท่านั้นนาจา
         new GetRestuarant().execute(filter);
-
     }
 }

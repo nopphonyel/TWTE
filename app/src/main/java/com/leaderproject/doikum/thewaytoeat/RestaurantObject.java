@@ -45,10 +45,4 @@ public class RestaurantObject {
     public void setCloseTime(String closeTime) {
         this.closeTime = closeTime;
     }
-
-    public void importRetaurantData(String s){
-        String[] tempString = s.split(" | ");
-        setName(tempString[1]);
-        
-    }
 }

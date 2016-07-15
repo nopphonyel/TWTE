@@ -30,9 +30,9 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
 
     private Handler updateRadioTextViewCurrentTime = new Handler();
     private AppCompatSpinner typeSpinner, zoneSpinner;
-    private RadioButton radioTimeNow, radioTimePick;
-    int currentHour, currentMin, currentSecond;
-    private Calendar currentTime;
+    private static RadioButton radioTimeNow, radioTimePick;
+    private static int currentHour, currentMin, currentSecond;
+    private static Calendar currentTime;
     private TimePickerDialog timePickerDialoge;
 
     private TextView timePreview;
@@ -67,12 +67,11 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
         return rootView;
     }
 
-    private void updateTime() {
+    private static void updateTime() {
         currentTime = Calendar.getInstance();
         currentHour = currentTime.get(Calendar.HOUR);
         currentMin = currentTime.get(Calendar.MINUTE);
         currentSecond = currentTime.get(Calendar.SECOND);
-
     }
 
     private void setupSpinner(FragmentActivity fragmentActivity, AppCompatSpinner spinner, String[] stringToAdd) {
@@ -119,11 +118,9 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
                 }
             };
             TimePickerDialog.OnCancelListener cancelListener = new TimePickerDialog.OnCancelListener() {
-
                 @Override
                 public void onCancel(DialogInterface dialog) {
                     radioTimeNow.setChecked(true);
-
                 }
             };
 
@@ -131,10 +128,6 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
             timePickerDialoge.setOnCancelListener(cancelListener);
             timePickerDialoge.setCanceledOnTouchOutside(false);
             timePickerDialoge.show();
-        }
-        if (v == radioTimeNow) {
-            Log.d("TAG_RADIO", "radio time now has been clicked");
-            ProgramStaticContent.setTimeChoose(Calendar.getInstance().get(Calendar.HOUR), Calendar.getInstance().get(Calendar.MINUTE));
         }
     }
 
@@ -162,6 +155,14 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
         public void onNothingSelected(AdapterView<?> parent) {
 
         }
+    }
+
+    public static boolean isTimeNowChecked(){
+        return radioTimeNow.isChecked();
+    }
+
+    public static void setTimeNow(){
+        ProgramStaticContent.setTimeChoose(currentHour , currentMin);
     }
 
 }
