@@ -42,7 +42,7 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savBundle) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.random_properties_layout, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ramdom_properties_center, container, false);
         typeSpinner = (AppCompatSpinner) rootView.findViewById(R.id.type_spin);
         zoneSpinner = (AppCompatSpinner) rootView.findViewById(R.id.zone_spin);
         radioTimeNow = (RadioButton) rootView.findViewById(R.id.radio_button_time_now);
