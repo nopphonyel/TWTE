@@ -68,7 +68,7 @@ public class GetRestuarant extends AsyncTask<String, String, String> {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             Log.d("mytag", "Failed : " + e.toString());
-            return CONNECTION_FAILED + e.toString();
+            return CONNECTION_FAILED;
         }
     }
 
@@ -76,7 +76,6 @@ public class GetRestuarant extends AsyncTask<String, String, String> {
     protected void onPostExecute(String fetchedData) {
         ProgramStaticContent.setRestaurantObjectFromString(fetchedData);
         if (isFirstTime) RandomResultFragment.updateContent(FIRST_TIME);
-        else
-            RandomResultFragment.updateContent(FOUND);
+        else RandomResultFragment.updateContent(FOUND);
     }
 }

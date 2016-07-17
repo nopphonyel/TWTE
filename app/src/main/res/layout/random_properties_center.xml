@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,6 +10,7 @@
         android:layout_height="match_parent">
 
         <android.support.v7.widget.CardView
+            app:cardBackgroundColor="@color/card_dark_background"
             android:id="@+id/type_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +27,8 @@
                 android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
                 android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top">
 
-                <TextView
+                <com.leaderproject.doikum.thewaytoeat.customComponent.CustomBoldTextView
+                    android:textColor="@color/cardview_light_background"
                     android:id="@+id/type_title"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -36,6 +39,7 @@
                     android:layout_centerHorizontal="true" />
 
                 <ImageView
+                    android:alpha="0.3"
                     android:id="@+id/type_icon"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -44,6 +48,7 @@
                     android:src="@mipmap/ic_dinning" />
 
                 <android.support.v7.widget.AppCompatSpinner
+                    android:theme="@style/AppThemeDark"
                     android:layout_marginTop="@dimen/nice_card_margin"
                     android:id="@+id/type_spin"
                     android:layout_width="match_parent"
@@ -57,6 +62,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            app:cardBackgroundColor="@color/card_dark_background"
             android:id="@+id/zone_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +80,8 @@
                 android:layout_marginRight="@dimen/nice_inside_card_relative_margin"
                 android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top">
 
-                <TextView
+                <com.leaderproject.doikum.thewaytoeat.customComponent.CustomBoldTextView
+                    android:textColor="@color/cardview_light_background"
                     android:id="@+id/zone_title"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -86,6 +93,7 @@
 
                 <ImageView
                     android:id="@+id/zone_icon"
+                    android:alpha="0.3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_alignParentEnd="true"
@@ -93,6 +101,7 @@
                     android:src="@mipmap/ic_zone" />
 
                 <android.support.v7.widget.AppCompatSpinner
+                    android:theme="@style/AppThemeDark"
                     android:layout_marginTop="@dimen/nice_card_margin"
                     android:id="@+id/zone_spin"
                     android:layout_width="match_parent"
@@ -106,6 +115,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            app:cardBackgroundColor="@color/card_dark_background"
             android:id="@+id/time_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,6 +135,7 @@
                 android:layout_marginTop="@dimen/nice_inside_card_relative_margin_top">
 
                 <TextView
+                    android:alpha="0.3"
                     android:id="@+id/time_preview"
                     android:textSize="35dp"
                     android:text="HH:MM:SS"
@@ -135,8 +146,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <TextView
+                <com.leaderproject.doikum.thewaytoeat.customComponent.CustomBoldTextView
                     android:id="@+id/time_title"
+                    android:textColor="@color/cardview_light_background"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -146,19 +158,20 @@
                     android:layout_centerHorizontal="true" />
 
                 <RadioGroup
+                    android:theme="@style/AppThemeDark"
                     android:id="@+id/time_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/time_title"
                     android:layout_marginTop="@dimen/nice_card_margin">
 
-                    <RadioButton
+                    <com.leaderproject.doikum.thewaytoeat.customComponent.CustomRadioButton
                         android:id="@+id/radio_button_time_now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/radio_button_time_now" />
 
-                    <RadioButton
+                    <com.leaderproject.doikum.thewaytoeat.customComponent.CustomRadioButton
                         android:id="@+id/radio_button_time_pick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

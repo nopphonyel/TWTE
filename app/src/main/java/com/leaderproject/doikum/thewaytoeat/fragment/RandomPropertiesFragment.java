@@ -74,7 +74,7 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
     }
 
     private void setupSpinner(FragmentActivity fragmentActivity, AppCompatSpinner spinner, String[] stringToAdd) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(fragmentActivity, android.R.layout.simple_list_item_1, stringToAdd);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(fragmentActivity, R.layout.spinner_layout, stringToAdd);
         spinner.setAdapter(adapter);
 
         if(spinner == typeSpinner)
