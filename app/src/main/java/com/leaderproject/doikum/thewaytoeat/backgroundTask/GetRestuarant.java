@@ -59,7 +59,7 @@ public class GetRestuarant extends AsyncTask<String, String, String> {
             // 4 -- แสดงผล อิอิ พิมพ์ mytag ตรงช่อง logcat เพื่อดู
             Log.d("mytag", str.toString());
 
-            if (params[1].equals(FIRST_TIME)) {
+            if (params.length == 2 && params[1].equals(FIRST_TIME)) {
                 isFirstTime = true;
             } else {
                 isFirstTime = false;

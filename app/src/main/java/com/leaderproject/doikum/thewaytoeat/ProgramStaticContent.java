@@ -107,4 +107,8 @@ public class ProgramStaticContent {
     public static RestaurantObject getRestaurantObject() {
         return restaurantObject;
     }
+
+    public static void checkData(){
+
+    }
 }
