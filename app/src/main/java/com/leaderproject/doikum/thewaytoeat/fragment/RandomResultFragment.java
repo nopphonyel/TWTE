@@ -2,9 +2,11 @@ package com.leaderproject.doikum.thewaytoeat.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -45,6 +47,11 @@ public class RandomResultFragment extends Fragment {
 
     public static void updateContent(String state) {
         RestaurantObject currentRestaurant = ProgramStaticContent.getRestaurantObject();
+        if(state == GetRestuarant.FIRST_TIME) {
+            Log.e("TAG_LINK",ProgramStaticContent.CONNECTION_LINK+currentRestaurant.getId()+"&first=true");
+            webView.loadUrl(ProgramStaticContent.CONNECTION_LINK+currentRestaurant.getId()+"&first=true");
+        }
+        else
         webView.loadUrl(ProgramStaticContent.CONNECTION_LINK+currentRestaurant.getId());
         /*
         restaurantNameTextView.setText(currentRestaurant.getName());

@@ -68,7 +68,7 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
 
     private static void updateTime() {
         currentTime = Calendar.getInstance();
-        currentHour = currentTime.get(Calendar.HOUR);
+        currentHour = currentTime.get(Calendar.HOUR_OF_DAY);
         currentMin = currentTime.get(Calendar.MINUTE);
         currentSecond = currentTime.get(Calendar.SECOND);
     }

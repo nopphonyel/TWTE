@@ -1,5 +1,7 @@
 package com.leaderproject.doikum.thewaytoeat;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.leaderproject.doikum.thewaytoeat.adptr.*;
 import com.leaderproject.doikum.thewaytoeat.backgroundTask.GetRestuarant;
@@ -27,7 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected ViewPager viewPager;
     protected FragmentAdapter fragmentAdapter;
     protected TabLayout tabLayout;
-    protected FloatingActionButton fab;
+    protected FloatingActionButton fab, fabNavigate;
+    private boolean fabNavigateExist = false;
+
+    private Animation fabOpen, fabClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +44,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //setSupportActionBar(toolbar);
 
         fab = (FloatingActionButton) findViewById(R.id.fab_main_action);
+        fabNavigate = (FloatingActionButton) findViewById(R.id.fab_navigate_action);
+        fabNavigate.setVisibility(View.INVISIBLE);
         viewPager = (ViewPager) findViewById(R.id.pager);
         fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
-        setupTabs(tabLayout, viewPager, fragmentAdapter);
+        fabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
 
-        // DO NOT REMOVE THIS COMMENT //
+        setupTabs(tabLayout, viewPager, fragmentAdapter);
+        viewPager.addOnPageChangeListener(new ViewPagerFABHandler());
+
         if (fab != null) fab.setOnClickListener(this);
+        if (fabNavigate != null) fabNavigate.setOnClickListener(this);
+        getFirstDataFromDlitSource();
     }
 
     private void setupTabs(TabLayout tl, ViewPager vp, FragmentAdapter fa) {
@@ -96,6 +110,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             getDataFromDlitSource();
         }
+        if(v == fabNavigate){
+            RestaurantObject restaurantObject = ProgramStaticContent.getRestaurantObject();
+            String latitude = restaurantObject.getLatitude() , longitude = restaurantObject.getLongtitude();
+            String label = restaurantObject.getName();
+
+            String uriBegin = "geo:" + latitude + "," + longitude;
+            String query = latitude + "," + longitude + "(" + label + ")";
+            String encodedQuery = Uri.encode(query);
+            String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
+            Uri uri = Uri.parse(uriString);
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
     }
 
 
@@ -113,5 +140,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String filter = typeCode + "," + zoneCode + "," + String.format("%02d", chooseHour) + ":" + String.format("%02d", chooseMin) + ":00"; //type,zone,time เวลาต้องอยู่ในรูป xx:xx:xx เท่านั้นนาจา
         new GetRestuarant().execute(filter);
+    }
+
+    private void getFirstDataFromDlitSource() {
+        int chooseHour = ProgramStaticContent.getChooseTimeHour(), chooseMin = ProgramStaticContent.getChooseTimeMin();
+        int zoneCode = ProgramStaticContent.getSelectedZoneCode(), typeCode = ProgramStaticContent.getSelectedTypeCode();
+
+        String filter = typeCode + "," + zoneCode + "," + String.format("%02d", chooseHour) + ":" + String.format("%02d", chooseMin) + ":00"; //type,zone,time เวลาต้องอยู่ในรูป xx:xx:xx เท่านั้นนาจา
+        new GetRestuarant().execute(filter,GetRestuarant.FIRST_TIME);
+        viewPager.setCurrentItem(1);
+    }
+
+    public class ViewPagerFABHandler implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            if (ProgramStaticContent.isBetaVersion()) {
+                incomingAnimation(position);
+            }
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+
+        public void incomingAnimation(int position){
+
+            if (position == 0 && fabNavigateExist) {
+                fabNavigate.startAnimation(fabClose);
+                fabNavigateExist = false;
+                Log.d("TAG" , "A: CLOSING "+fabNavigateExist);
+            }
+            else if (position == 1 && !fabNavigateExist) {
+                fabNavigate.startAnimation(fabOpen);
+                fabNavigateExist = true;
+                Log.d("TAG" , "A: OPENING "+fabNavigateExist);
+            }
+        }
     }
 }

@@ -97,6 +97,8 @@ public class ProgramStaticContent {
             restaurantObject.setLocation(tempString[3]);
             restaurantObject.setOpenTime(tempString[4]);
             restaurantObject.setCloseTime(tempString[5]);
+            restaurantObject.setLatitude(tempString[6]);
+            restaurantObject.setLongtitude(tempString[7]);
         } catch (ArrayIndexOutOfBoundsException ex){
             restaurantObject.setName(fetchedData);
         }

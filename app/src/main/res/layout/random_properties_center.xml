@@ -128,7 +128,7 @@
                     android:id="@+id/time_preview"
                     android:textSize="35dp"
                     android:text="HH:MM:SS"
-                    android:textColor="#cbe1c8"
+                    android:textColor="#e6c9c9"
                     android:textStyle="bold"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"

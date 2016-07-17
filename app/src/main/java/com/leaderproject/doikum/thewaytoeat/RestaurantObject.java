@@ -9,6 +9,15 @@ public class RestaurantObject {
     private String type;
     private String openTime;
     private String closeTime;
+    private String latitude , longtitude;
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
     public String getId() {
         return id;
@@ -58,5 +67,13 @@ public class RestaurantObject {
 
     public void setCloseTime(String closeTime) {
         this.closeTime = closeTime;
+    }
+
+    public String getLongtitude() {
+        return longtitude;
+    }
+
+    public void setLongtitude(String longtitude) {
+        this.longtitude = longtitude;
     }
 }

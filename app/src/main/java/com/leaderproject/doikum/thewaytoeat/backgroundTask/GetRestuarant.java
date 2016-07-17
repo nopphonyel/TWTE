@@ -21,15 +21,18 @@ public class GetRestuarant extends AsyncTask<String, String, String> {
     public static final String FOUND = "Found";
     public static final String CONNECTION_SUCCESS = "CONNECT_SUCCESS";
     public static final String CONNECTION_FAILED = "CONNECT_FAILED : ";
+    public static final String FIRST_TIME = "First";
+
+    private boolean isFirstTime = false;
 
     @Override
     protected String doInBackground(String... params) {
         try {
             // 2 --- connection part * Dont EDIT !!!
             URL url = new URL("http://dlitsource.com/leadership/filter.php"); //url to server
-            String urlParameters = "filter="+params[0]; // parameter to server
+            String urlParameters = "filter=" + params[0]; // parameter to server
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            Log.d("TAG_CHECK_FILTER" , urlParameters);
+            Log.d("TAG_CHECK_FILTER", urlParameters);
             conn.setDoOutput(true);
             conn.setDoInput(true);
             conn.setInstanceFollowRedirects(false);
@@ -55,6 +58,12 @@ public class GetRestuarant extends AsyncTask<String, String, String> {
             conn.disconnect();
             // 4 -- แสดงผล อิอิ พิมพ์ mytag ตรงช่อง logcat เพื่อดู
             Log.d("mytag", str.toString());
+
+            if (params[1].equals(FIRST_TIME)) {
+                isFirstTime = true;
+            } else {
+                isFirstTime = false;
+            }
             return str.toString();
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -66,11 +75,8 @@ public class GetRestuarant extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String fetchedData) {
         ProgramStaticContent.setRestaurantObjectFromString(fetchedData);
-        if(fetchedData.equalsIgnoreCase(NOT_FOUND)){
-            RandomResultFragment.updateContent(NOT_FOUND);
-        }
-        else {
+        if (isFirstTime) RandomResultFragment.updateContent(FIRST_TIME);
+        else
             RandomResultFragment.updateContent(FOUND);
-        }
     }
 }
