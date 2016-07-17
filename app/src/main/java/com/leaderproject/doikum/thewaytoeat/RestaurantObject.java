@@ -4,7 +4,21 @@ package com.leaderproject.doikum.thewaytoeat;
  * Created by NR7 on 7/15/2016.
  */
 public class RestaurantObject {
-    private String name , location , type , openTime , closeTime;
+    private String name;
+    private String location;
+    private String type;
+    private String openTime;
+    private String closeTime;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
 
     public String getName() {
         return name;

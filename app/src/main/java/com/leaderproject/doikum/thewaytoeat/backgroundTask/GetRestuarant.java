@@ -17,6 +17,8 @@ import java.net.URL;
  */
 public class GetRestuarant extends AsyncTask<String, String, String> {
 
+    public static final String NOT_FOUND = "Not Found";
+    public static final String FOUND = "Found";
     public static final String CONNECTION_SUCCESS = "CONNECT_SUCCESS";
     public static final String CONNECTION_FAILED = "CONNECT_FAILED : ";
 
@@ -64,6 +66,11 @@ public class GetRestuarant extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String fetchedData) {
         ProgramStaticContent.setRestaurantObjectFromString(fetchedData);
-        RandomResultFragment.updateContent();
+        if(fetchedData.equalsIgnoreCase(NOT_FOUND)){
+            RandomResultFragment.updateContent(NOT_FOUND);
+        }
+        else {
+            RandomResultFragment.updateContent(FOUND);
+        }
     }
 }

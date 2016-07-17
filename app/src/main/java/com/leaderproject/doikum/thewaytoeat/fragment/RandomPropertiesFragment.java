@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,7 @@ public class RandomPropertiesFragment extends Fragment implements View.OnClickLi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savBundle) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ramdom_properties_center, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.random_properties_center, container, false);
         typeSpinner = (AppCompatSpinner) rootView.findViewById(R.id.type_spin);
         zoneSpinner = (AppCompatSpinner) rootView.findViewById(R.id.zone_spin);
         radioTimeNow = (RadioButton) rootView.findViewById(R.id.radio_button_time_now);

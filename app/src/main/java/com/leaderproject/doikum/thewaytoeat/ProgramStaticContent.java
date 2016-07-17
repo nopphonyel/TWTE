@@ -12,6 +12,8 @@ public class ProgramStaticContent {
 
     private static RestaurantObject restaurantObject = new RestaurantObject();
 
+    public static final String CONNECTION_LINK = "http://dlitsource.com/leadership/show.php?id=";
+
     private final static String TAG_CURRENT_VALUE = "PSC:CurrentValue";
 
     private static String[] zone = new String[]{
@@ -89,6 +91,7 @@ public class ProgramStaticContent {
 
         try {
             String[] tempString = fetchedData.split(",");
+            restaurantObject.setId(tempString[0]);
             restaurantObject.setName(tempString[1]);
             restaurantObject.setType(tempString[2]);
             restaurantObject.setLocation(tempString[3]);

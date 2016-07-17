@@ -27,6 +27,7 @@
 
                 <TextView
                     android:id="@+id/type_title"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/card_type_title"
@@ -43,8 +44,9 @@
                     android:src="@mipmap/ic_dinning" />
 
                 <android.support.v7.widget.AppCompatSpinner
+                    android:layout_marginTop="@dimen/nice_card_margin"
                     android:id="@+id/type_spin"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/type_title"
                     android:layout_centerHorizontal="true"
@@ -74,6 +76,7 @@
 
                 <TextView
                     android:id="@+id/zone_title"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/card_zone_title"
@@ -90,8 +93,9 @@
                     android:src="@mipmap/ic_zone" />
 
                 <android.support.v7.widget.AppCompatSpinner
+                    android:layout_marginTop="@dimen/nice_card_margin"
                     android:id="@+id/zone_spin"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/zone_title"
                     android:layout_centerHorizontal="true"
@@ -133,6 +137,7 @@
 
                 <TextView
                     android:id="@+id/time_title"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/card_time_pick_title"
