@@ -12,13 +12,14 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/imageView" />
 
-    <com.leaderproject.doikum.thewaytoeat.customComponent.CustomTextView
+    <com.leaderproject.doikum.thewaytoeat.customComponent.CustomBoldTextView
         android:layout_marginBottom="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:text="ไม่พบร้านอาหาร"
+        android:textSize="17sp"
+        android:text="@string/dialog_not_found_res"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif" />
 
 </RelativeLayout>

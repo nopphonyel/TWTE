@@ -13,6 +13,26 @@ import android.widget.TextView;
 public class CustomTextView extends TextView {
     public CustomTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.setTypeface(Typeface.createFromAsset(context.getAssets(),"fonts/Kanit-Regular.ttf"));
+        setCustomFont(context);
+    }
+
+    public CustomTextView(Context context) {
+        super(context);
+        setCustomFont(context);
+    }
+
+    public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        setCustomFont(context);
+    }
+
+    private void setCustomFont(Context context) {
+        Typeface aNewFont = FontCache.getTypeFace("CSPraJad.otf", context);
+        setTypeface(aNewFont);
+    }
+
+    public void setFont(String fontName){
+        Typeface aNewFont = FontCache.getTypeFace(fontName , getContext());
+        setTypeface(aNewFont);
     }
 }

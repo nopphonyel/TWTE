@@ -65,7 +65,7 @@ public class ProgramStaticContent {
     }
 
     //When ready to use "promotion fragment", please edit betaVersion to "false"
-    private static boolean betaVersion = true;
+    private static boolean betaVersion = false;
 
     public static boolean isBetaVersion() {
         return betaVersion;

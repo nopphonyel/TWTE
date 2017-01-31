@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KKU Food Random</string>
+    <string name="action_settings">ตั้งค่า</string>
+    <string name="card_type_title">ประเภทของอาหาร</string>
+    <string name="card_zone_title">บริเวณของร้านอาหาร</string>
+    <string name="card_time_pick_title">เลือกเวลาที่จะไป</string>
+    <string name="radio_button_time_now">ตอนนี้</string>
+    <string name="radio_button_time_pick">เลือกเวลา</string>
+    <string name="dialog_not_found_res">ไม่พบร้านอาหาร</string>
+    <string name="hot_promo">โปรโมชั่นร้อนแรง</string>
+    <string name="recommend_other">คนอื่นก็แนะนำ!</string>
+    <string name="near_by">บริเวณใกล้เคียง</string>
+    <string name="btn_categories">แสดงแบบหมวดหมู่</string>
+    <string name="more">เพิ่มเติม</string>
+</resources>

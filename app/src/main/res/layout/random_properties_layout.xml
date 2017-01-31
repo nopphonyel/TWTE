@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/card_zone_title"
-                    android:textSize="23dp" />
+                    android:textSize="23sp" />
 
                 <ImageView
                     android:id="@+id/zone_icon"
@@ -116,7 +116,7 @@
 
                 <TextView
                     android:id="@+id/time_preview"
-                    android:textSize="35dp"
+                    android:textSize="35sp"
                     android:text="HH:MM:SS"
                     android:textColor="#cbe1c8"
                     android:textStyle="bold"
@@ -130,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/card_time_pick_title"
-                    android:textSize="23dp" />
+                    android:textSize="23sp" />
 
                 <RadioGroup
                     android:id="@+id/time_type"
